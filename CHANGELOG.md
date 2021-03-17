@@ -1,3 +1,7 @@
+## [0.8.1] - Update README (2021.03.16)
+
+* Main release to coincide with Flutter 2.
+
 ## [0.8.0] - Update README (2021.03.01)
 
 * Support for Null Safety.
