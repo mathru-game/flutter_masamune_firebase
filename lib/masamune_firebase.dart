@@ -8,5 +8,9 @@
 /// [YouTube]: https://www.youtube.com/c/mathrunetchannel
 library masamune_firebase;
 
+import 'package:firebase_model_notifier/firebase_model_notifier.dart';
+import 'package:masamune/masamune.dart';
 export 'package:masamune/masamune.dart';
 export 'package:firebase_model_notifier/firebase_model_notifier.dart';
+
+part 'adapter/firebase_module_adapter.dart';
