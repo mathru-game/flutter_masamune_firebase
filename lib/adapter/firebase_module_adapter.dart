@@ -1,37 +1,37 @@
 part of masamune_firebase;
 
 @immutable
-class FirebaseModuleAdapter extends ModuleAdapter<
-    FirestoreDynamicDocumentModel,
-    FirestoreDynamicCollectionModel,
-    ModelProvider<FirestoreDynamicDocumentModel>,
-    ModelProvider<FirestoreDynamicCollectionModel>> {
+class FirebaseModuleAdapter extends ModuleAdapter {
   const FirebaseModuleAdapter();
 
   @override
-  T collectionProvider<
-              T extends ModelProvider<FirestoreDynamicCollectionModel>>(
+  ModelProvider<T> collectionProvider<T extends DynamicCollectionModel>(
           String path) =>
-      firestoreCollectionProvider(path) as T;
+      firestoreCollectionProvider(path) as ModelProvider<T>;
 
   @override
-  T documentProvider<T extends ModelProvider<FirestoreDynamicDocumentModel>>(
+  ModelProvider<T> documentProvider<T extends DynamicDocumentModel>(
           String path) =>
-      firestoreDocumentProvider(path) as T;
+      firestoreDocumentProvider(path) as ModelProvider<T>;
 
   @override
-  FirestoreDynamicDocumentModel loadDocument(
-      FirestoreDynamicDocumentModel document) {
-    return document..listen();
+  T loadDocument<T extends DynamicDocumentModel>(T document) {
+    if (document is FirestoreDynamicDocumentModel) {
+      document.listen();
+    }
+    return document;
   }
 
   @override
-  FirestoreDynamicCollectionModel loadCollection(
-      FirestoreDynamicCollectionModel collection) {
-    return collection..listen();
+  T loadCollection<T extends DynamicCollectionModel>(T collection) {
+    if (collection is FirestoreDynamicCollectionModel) {
+      collection.listen();
+    }
+    return collection;
   }
 
   @override
+  // ignore: avoid_field_initializers_in_const_classes
   final bool enabledAuth = true;
 
   @override
@@ -65,4 +65,28 @@ class FirebaseModuleAdapter extends ModuleAdapter<
   Future<void> tryRestoreAuth() async {
     await FirebaseAuthCore.tryRestoreAuth();
   }
+
+  @override
+  String get email => FirebaseAuthCore.email;
+
+  @override
+  bool get isAnonymously => FirebaseAuthCore.isAnonymously;
+
+  @override
+  bool get isSignedIn => FirebaseAuthCore.isSignedIn;
+
+  @override
+  bool get isVerified => FirebaseAuthCore.isVerified;
+
+  @override
+  String get name => FirebaseAuthCore.name;
+
+  @override
+  String get phoneNumber => FirebaseAuthCore.phoneNumber;
+
+  @override
+  String get photoURL => FirebaseAuthCore.photoURL;
+
+  @override
+  String get userId => FirebaseAuthCore.uid;
 }
