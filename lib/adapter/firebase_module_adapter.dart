@@ -31,6 +31,26 @@ class FirebaseModuleAdapter extends ModuleAdapter {
   }
 
   @override
+  Future<void> deleteDocument<T extends DynamicDocumentModel>(
+      T document) async {
+    if (document is FirestoreDynamicDocumentModel) {
+      await document.delete();
+    }
+  }
+
+  @override
+  Future<void> saveDocument<T extends DynamicDocumentModel>(T document) async {
+    if (document is FirestoreDynamicDocumentModel) {
+      await document.save();
+    }
+  }
+
+  @override
+  Future<String> uploadMedia(String path) {
+    return FirebaseStorageCore.upload(path);
+  }
+
+  @override
   // ignore: avoid_field_initializers_in_const_classes
   final bool enabledAuth = true;
 
