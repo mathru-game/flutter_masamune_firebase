@@ -1,48 +1,48 @@
 part of masamune_firebase;
 
 @immutable
-class FirebaseModuleAdapter extends ModuleAdapter {
+class FirebaseModuleAdapter extends ModuleAdapter<FirestoreDynamicDocumentModel,
+    FirestoreDynamicCollectionModel> {
   const FirebaseModuleAdapter();
 
   @override
-  ModelProvider<T> collectionProvider<T extends DynamicCollectionModel>(
+  ModelProvider<FirestoreDynamicCollectionModel> collectionProvider(
           String path) =>
-      firestoreCollectionProvider(path) as ModelProvider<T>;
+      firestoreCollectionProvider(path);
 
   @override
-  ModelProvider<T> documentProvider<T extends DynamicDocumentModel>(
-          String path) =>
-      firestoreDocumentProvider(path) as ModelProvider<T>;
+  ModelProvider<FirestoreDynamicDocumentModel> documentProvider(String path) =>
+      firestoreDocumentProvider(path);
 
   @override
-  T loadDocument<T extends DynamicDocumentModel>(T document) {
-    if (document is FirestoreDynamicDocumentModel) {
-      document.listen();
-    }
+  FirestoreDynamicDocumentModel loadDocument(
+      FirestoreDynamicDocumentModel document) {
+    document.listen();
     return document;
   }
 
   @override
-  T loadCollection<T extends DynamicCollectionModel>(T collection) {
-    if (collection is FirestoreDynamicCollectionModel) {
-      collection.listen();
-    }
+  FirestoreDynamicCollectionModel loadCollection(
+      FirestoreDynamicCollectionModel collection) {
+    collection.listen();
     return collection;
   }
 
   @override
-  Future<void> deleteDocument<T extends DynamicDocumentModel>(
-      T document) async {
-    if (document is FirestoreDynamicDocumentModel) {
-      await document.delete();
-    }
+  FirestoreDynamicDocumentModel createDocument(
+      FirestoreDynamicCollectionModel collection,
+      [String? id]) {
+    return collection.create(id);
   }
 
   @override
-  Future<void> saveDocument<T extends DynamicDocumentModel>(T document) async {
-    if (document is FirestoreDynamicDocumentModel) {
-      await document.save();
-    }
+  Future<void> deleteDocument(FirestoreDynamicDocumentModel document) async {
+    await document.delete();
+  }
+
+  @override
+  Future<void> saveDocument(FirestoreDynamicDocumentModel document) async {
+    await document.save();
   }
 
   @override

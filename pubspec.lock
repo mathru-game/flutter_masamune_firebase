@@ -231,7 +231,7 @@ packages:
       name: firebase_model_notifier
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.2"
+    version: "0.8.2+1"
   firebase_storage:
     dependency: transitive
     description:
@@ -372,7 +372,7 @@ packages:
       name: katana
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.2"
+    version: "0.8.2+5"
   katana_firebase:
     dependency: transitive
     description:
@@ -386,7 +386,7 @@ packages:
       name: katana_module
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.2"
+    version: "0.8.2+2"
   katana_routing:
     dependency: transitive
     description:
@@ -414,7 +414,7 @@ packages:
       name: masamune
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.3"
+    version: "0.8.3+3"
   matcher:
     dependency: transitive
     description:
@@ -442,7 +442,7 @@ packages:
       name: model_notifier
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.2"
+    version: "0.8.2+1"
   octo_image:
     dependency: transitive
     description:
@@ -762,7 +762,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
   xdg_directories:
     dependency: transitive
     description:
