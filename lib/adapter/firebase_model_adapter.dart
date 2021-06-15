@@ -1,9 +1,9 @@
 part of masamune_firebase;
 
 @immutable
-class FirebaseModuleAdapter extends ModuleAdapter<FirestoreDynamicDocumentModel,
+class FirebaseModelAdapter extends ModelAdapter<FirestoreDynamicDocumentModel,
     FirestoreDynamicCollectionModel> {
-  const FirebaseModuleAdapter();
+  const FirebaseModelAdapter();
 
   @override
   ModelProvider<FirestoreDynamicCollectionModel> collectionProvider(
@@ -109,4 +109,19 @@ class FirebaseModuleAdapter extends ModuleAdapter<FirestoreDynamicDocumentModel,
 
   @override
   String get userId => FirebaseAuthCore.uid;
+
+  @override
+  FirebaseModelAdapter? fromMap(DynamicMap map) {
+    if (map.get("type", "") != type) {
+      return null;
+    }
+    return const FirebaseModelAdapter();
+  }
+
+  @override
+  DynamicMap toMap() {
+    return <String, dynamic>{
+      "type": type,
+    };
+  }
 }

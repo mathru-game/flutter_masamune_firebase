@@ -13,4 +13,4 @@ import 'package:masamune/masamune.dart';
 export 'package:masamune/masamune.dart';
 export 'package:firebase_model_notifier/firebase_model_notifier.dart';
 
-part 'adapter/firebase_module_adapter.dart';
+part 'adapter/firebase_model_adapter.dart';
