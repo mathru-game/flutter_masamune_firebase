@@ -16,15 +16,25 @@ class FirebaseModelAdapter extends ModelAdapter<FirestoreDynamicDocumentModel,
 
   @override
   FirestoreDynamicDocumentModel loadDocument(
-      FirestoreDynamicDocumentModel document) {
-    document.listen();
+      FirestoreDynamicDocumentModel document,
+      [bool once = false]) {
+    if (once) {
+      document.loadOnce();
+    } else {
+      document.listen();
+    }
     return document;
   }
 
   @override
   FirestoreDynamicCollectionModel loadCollection(
-      FirestoreDynamicCollectionModel collection) {
-    collection.listen();
+      FirestoreDynamicCollectionModel collection,
+      [bool once = false]) {
+    if (once) {
+      collection.loadOnce();
+    } else {
+      collection.listen();
+    }
     return collection;
   }
 
