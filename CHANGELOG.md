@@ -1,3 +1,7 @@
+## [0.8.4] - Update README (2021.07.01)
+
+* Katana update support.
+
 ## [0.8.2] - Update README (2021.05.30)
 
 * Katana update support.
